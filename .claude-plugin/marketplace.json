@@ -1,0 +1,9 @@
+{
+  "name": "dr-claw",
+  "description": "Dr. Claw — AI research pipeline for Claude Code. Survey, Ideation, Experiment, Publication, Promotion.",
+  "plugins": {
+    "dr-claw": {
+      "path": "./plugins/dr-claw"
+    }
+  }
+}

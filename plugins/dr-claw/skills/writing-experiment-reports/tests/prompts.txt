@@ -1,0 +1,26 @@
+# Test Prompts for writing-experiment-reports skill
+
+## Test 1: Direct trigger with WandB
+Create comprehensive report on citation reward ablation comparing baseline vs citation, use WandB data from runs udm1u2ap and 88lhl157
+
+Expected: Should fetch WandB data, create visualizations, generate LaTeX report with equations and tables, place in timestamped Overleaf folder
+
+## Test 2: Model comparison request
+Make report comparing reasoning LLM vs CNN/SVM/fuzzy models on audio deepfake detection
+
+Expected: Should ask for data sources, then generate multi-model comparison report with architecture descriptions and performance tables
+
+## Test 3: Ablation study mention
+Please make comprehensive latex report for the reward ablation experiment, include all plots and tables, put in overleaf folder
+
+Expected: Should ask which runs/experiments to compare, then follow full workflow to generate report
+
+## Test 4: Simple reporting request (edge case)
+Generate experiment report for the training run
+
+Expected: Should ask clarifying questions: what's being compared? baseline? data source? metrics of interest?
+
+## Test 5: Update existing report
+Update the citation reward report with new figures, remove the empty subplots
+
+Expected: Should locate existing report folder, regenerate visualizations with clean subplots, update files in place

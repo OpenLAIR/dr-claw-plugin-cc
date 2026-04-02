@@ -1,0 +1,9 @@
+{
+  "hooks": [
+    {
+      "event": "SessionStart",
+      "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/detect-pipeline.mjs\"",
+      "timeout": 3000
+    }
+  ]
+}

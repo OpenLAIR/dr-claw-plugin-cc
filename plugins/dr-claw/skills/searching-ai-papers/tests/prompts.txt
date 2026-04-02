@@ -1,0 +1,7 @@
+Search arXiv and OpenReview for graph neural network interpretability papers from 2020 to 2024.
+Find AI alignment papers across arXiv, Semantic Scholar, and OpenAlex; give me a JSON list.
+OpenReview only: search for diffusion model papers related to ICLR.
+What are the latest ML systems papers about GPU scheduling? Use all sources.
+Summarize the top 10 transformer pruning papers and include links.
+Show hot Hugging Face daily papers about reasoning models this week.
+Get accepted ICLR 2025 papers with metadata.

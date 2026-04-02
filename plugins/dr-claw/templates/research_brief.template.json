@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "title": "",
+    "lead_author": "",
+    "target_venue": "",
+    "project_type": "",
+    "created_at": ""
+  },
+  "sections": {
+    "survey": {
+      "literature_scope": "",
+      "key_references": [],
+      "synthesis_summary": "",
+      "open_gaps": []
+    },
+    "ideation": {
+      "research_goal": "",
+      "problem_framing": "",
+      "evidence_plan": "",
+      "success_criteria": []
+    },
+    "experiment": {
+      "hypothesis_or_validation_goal": "",
+      "dataset_or_data_source": "",
+      "method_or_protocol": "",
+      "evaluation_plan": ""
+    },
+    "publication": {
+      "paper_outline": "",
+      "figures_tables_plan": "",
+      "artifact_plan": "",
+      "submission_checklist": []
+    },
+    "promotion": {
+      "slide_outline": "",
+      "deck_style": "",
+      "homepage_plan": "",
+      "tts_config": "",
+      "video_assembly_plan": ""
+    }
+  }
+}

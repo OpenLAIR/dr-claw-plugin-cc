@@ -1,0 +1,5 @@
+Create a SOP-style academic figure prompt comparing a baseline CNN and a proposed Transformer for image classification.
+I need a technical diagram prompt for a baseline vs proposed method in TikZ format; include exact LaTeX symbols.
+Write a NeurIPS-style figure prompt for a 3-stage pipeline (ingest, process, serve) with top-down flow.
+Generate a framework figure prompt contrasting dense vs sparse attention with math-first labels.
+Where is @SOP_ACADEMIC_FIGURE_PROMPTING?
