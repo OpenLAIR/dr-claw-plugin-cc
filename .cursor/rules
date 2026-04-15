@@ -1,0 +1,41 @@
+## Dr. Claw Plugin for Claude Code
+
+This is the Dr. Claw Plugin repo (OpenLAIR/dr-claw-plugin-cc). It packages the AI research pipeline as a Claude Code plugin.
+
+### Architecture
+
+- `plugins/dr-claw/commands/*.md` — Slash command definitions (Markdown + YAML frontmatter)
+- `plugins/dr-claw/skills/**/SKILL.md` — 60+ bundled research skills (agent-agnostic)
+- `plugins/dr-claw/scripts/*.mjs` — Node.js ESM helpers for file I/O
+- `plugins/dr-claw/templates/*.json` — Task templates per project type
+- `plugins/dr-claw/hooks/hooks.json` — SessionStart auto-detection hook
+
+### Key Conventions
+
+- Commands use `${CLAUDE_PLUGIN_ROOT}` to reference the plugin directory at runtime.
+- Scripts use `process.env.CLAUDE_PROJECT_DIR || process.cwd()` for the user's project root.
+- Skills are synced from the main dr-claw repo — do not edit directly. Edit in dr-claw and re-sync.
+- All pipeline state lives in `.pipeline/` within the user's project directory.
+
+### Research Pipeline
+
+Five stages: Survey, Ideation, Experiment, Publication, Promotion.
+
+Key files in user projects:
+- `.pipeline/docs/research_brief.json` — Project definition
+- `.pipeline/tasks/tasks.json` — Task list with statuses
+- `instance.json` — Path mapping for pipeline directories
+
+### Rules
+
+- SANDBOX: Plugin must never access files outside user's project directory at runtime.
+- No PII in committed code (no personal paths, usernames, credentials).
+- Behavior changes must be reflected in ALL agent configs: CLAUDE.md, AGENTS.md, GEMINI.md, and this file.
+- Never fabricate references, experimental results, or citations.
+- After modifying commands, test with: `cc --plugin-dir plugins/dr-claw`
+
+### State Contract
+
+- Update tasks.json after each task completion.
+- Update research_brief.json with artifacts produced.
+- Confirm with user at stage transitions before proceeding.
