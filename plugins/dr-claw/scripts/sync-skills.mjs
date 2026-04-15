@@ -42,7 +42,8 @@ const SKIP = new Set([
   'making-nsf-pose-insight-slides', 'making-skills',
   'batch-condensing-arxiv-papers', 'converting-pptx-to-images',
   'processing-gemini-talks', 'annotating-exhibit-pdfs',
-  'obsidian-skills'
+  'obsidian-skills',
+  'deploying-to-remote-compute'
 ]);
 
 const entries = fs.readdirSync(sourceArg, { withFileTypes: true });
