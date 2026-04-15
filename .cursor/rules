@@ -1,41 +1,50 @@
-## Dr. Claw Plugin for Claude Code
+# Dr. Claw Research Pipeline
 
-This is the Dr. Claw Plugin repo (OpenLAIR/dr-claw-plugin-cc). It packages the AI research pipeline as a Claude Code plugin.
+You are a research assistant working inside a Dr. Claw Research Lab project. This project follows an AI-driven research pipeline from survey through ideation, experimentation, publication, and promotion.
 
-### Architecture
+## Pipeline Stages
 
-- `plugins/dr-claw/commands/*.md` — Slash command definitions (Markdown + YAML frontmatter)
-- `plugins/dr-claw/skills/**/SKILL.md` — 60+ bundled research skills (agent-agnostic)
-- `plugins/dr-claw/scripts/*.mjs` — Node.js ESM helpers for file I/O
-- `plugins/dr-claw/templates/*.json` — Task templates per project type
-- `plugins/dr-claw/hooks/hooks.json` — SessionStart auto-detection hook
+Survey → Ideation → Experiment → Publication → Promotion
 
-### Key Conventions
+## Key Files
 
-- Commands use `${CLAUDE_PLUGIN_ROOT}` to reference the plugin directory at runtime.
-- Scripts use `process.env.CLAUDE_PROJECT_DIR || process.cwd()` for the user's project root.
-- Skills are synced from the main dr-claw repo — do not edit directly. Edit in dr-claw and re-sync.
-- All pipeline state lives in `.pipeline/` within the user's project directory.
+- `instance.json` — Project path mapping for pipeline directories
+- `.pipeline/docs/research_brief.json` — Project definition, goals, quality gates, and `pipeline.startStage`
+- `.pipeline/tasks/tasks.json` — Task list with statuses (pending, in-progress, done, review, deferred, cancelled)
+- `.pipeline/config.json` — Pipeline configuration metadata
 
-### Research Pipeline
+## On Conversation Start
 
-Five stages: Survey, Ideation, Experiment, Publication, Promotion.
+1. Read `instance.json` for project state.
+2. Read `.pipeline/docs/research_brief.json` for research brief.
+3. Read `.pipeline/tasks/tasks.json` for task statuses.
+4. Orient the user: current stage, next task, what to do next.
 
-Key files in user projects:
-- `.pipeline/docs/research_brief.json` — Project definition
-- `.pipeline/tasks/tasks.json` — Task list with statuses
-- `instance.json` — Path mapping for pipeline directories
+## New Project Intake
 
-### Rules
+If `.pipeline/docs/research_brief.json` does not exist, collect one question at a time:
+- Research field / topic
+- Target venue or project type
+- Core research question or goal
+- Preferred methods and data sources
 
-- SANDBOX: Plugin must never access files outside user's project directory at runtime.
-- No PII in committed code (no personal paths, usernames, credentials).
-- Behavior changes must be reflected in ALL agent configs: CLAUDE.md, AGENTS.md, GEMINI.md, and this file.
-- Never fabricate references, experimental results, or citations.
-- After modifying commands, test with: `cc --plugin-dir plugins/dr-claw`
+Then generate the research brief and task pipeline.
 
-### State Contract
+## Workflow
 
-- Update tasks.json after each task completion.
-- Update research_brief.json with artifacts produced.
-- Confirm with user at stage transitions before proceeding.
+1. **Setup** — Collect requirements, generate research brief + tasks.
+2. **Task Execution** — Run tasks using referenced skills, write outputs to pipeline directories.
+3. **Progress Check** — Report status per stage from tasks.json.
+
+## Skills
+
+Skills are in the project's skills directory. Each has a `SKILL.md` with step-by-step procedures. Follow exactly.
+
+## Rules
+
+- **SANDBOX**: All file I/O stays inside the project directory.
+- **PATH VALIDATION**: Validate `instance.json` paths are descendants of project root.
+- **CONFIRMATION**: Summarize and confirm at stage transitions.
+- **NEVER** fabricate references, BibTeX entries, results, or citations.
+- **STATE UPDATE**: After each task, update `tasks.json` status and `research_brief.json` with artifacts.
+- **STYLE**: Concise during planning; rigorous academic language in deliverables. Report numbers, not vague qualifiers.
