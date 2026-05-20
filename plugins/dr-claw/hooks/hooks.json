@@ -1,9 +1,16 @@
 {
-  "hooks": [
-    {
-      "event": "SessionStart",
-      "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/detect-pipeline.mjs\"",
-      "timeout": 3000
-    }
-  ]
+  "description": "Detect Dr. Claw pipeline state on session start.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/detect-pipeline.mjs\"",
+            "timeout": 3000
+          }
+        ]
+      }
+    ]
+  }
 }
