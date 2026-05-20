@@ -1,9 +1,24 @@
 {
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "dr-claw",
   "description": "Dr. Claw — AI research pipeline for Claude Code. Survey, Ideation, Experiment, Publication, Promotion.",
-  "plugins": {
-    "dr-claw": {
-      "path": "./plugins/dr-claw"
+  "owner": {
+    "name": "OpenLAIR",
+    "url": "https://github.com/OpenLAIR"
+  },
+  "plugins": [
+    {
+      "name": "dr-claw",
+      "description": "AI research pipeline — run end-to-end research from your terminal (survey, ideation, experiment, publication, promotion).",
+      "author": {
+        "name": "OpenLAIR",
+        "url": "https://github.com/OpenLAIR"
+      },
+      "category": "research",
+      "source": "./plugins/dr-claw",
+      "homepage": "https://github.com/OpenLAIR/dr-claw-plugin-cc",
+      "license": "GPL-3.0-only",
+      "keywords": ["research", "pipeline", "survey", "experiment", "paper-writing"]
     }
-  }
+  ]
 }
